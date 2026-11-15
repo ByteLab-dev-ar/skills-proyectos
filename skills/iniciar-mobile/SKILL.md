@@ -59,7 +59,7 @@ Mobile/
   Specs/         una carpeta por spec
 ```
 
-- Cada subcarpeta arranca con una nota por tema que diga qué va a tener. Se llenan en cada `/cerrar-spec`. No inventes contenido: todavía no hay código.
+- Las subcarpetas arrancan vacías, sin notas. Cada nota la crea `/cerrar-spec` cuando hay código del que sacarla: una nota vacía no dice nada y hay que mantenerla.
 - Sumá `Mobile/` al reglamento de la bóveda (su `CLAUDE.md`).
 - La numeración de las specs sigue siendo una sola para todo el proyecto.
 
