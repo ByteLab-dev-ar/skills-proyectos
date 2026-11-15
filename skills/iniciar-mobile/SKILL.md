@@ -2,7 +2,6 @@
 name: iniciar-mobile
 description: Arranca la parte mobile de un proyecto que ya tiene su backend. Pregunta qué pantallas tiene la app mobile, crea la carpeta Mobile de la bóveda, dibuja su mapa de pantallas y su roadmap. Se corre cuando el roadmap general está completo, o antes si el usuario lo pide.
 disable-model-invocation: true
-effort: high
 argument-hint: 'vacío, o lo que el usuario ya sabe de la app mobile'
 ---
 
@@ -16,7 +15,9 @@ No se corre al empezar el proyecto, a propósito: mientras se construyen el back
 
 ## Modelo y esfuerzo
 
-Este comando está pensado para **Fable 5.2 con esfuerzo alto**: decide qué pantallas tiene la app y no escribe código. Opus 5.5 queda para programar, en `/spec-impl`. Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale que lo deje en alto para toda la sesión.
+Este comando está pensado para **Fable 5.2 con esfuerzo alto**: decide qué pantallas tiene la app y no escribe código. Opus 5.5 queda para programar, en `/spec-impl`.
+
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Pasos
 

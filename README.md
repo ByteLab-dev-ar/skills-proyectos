@@ -22,7 +22,7 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 | `/estado` | Dice en qué punto está el proyecto y qué comando conviene correr ahora. Solo lee. | Haiku 5.5, bajo |
 | `dibujar` | Genera los dibujos de la bóveda como SVG, a partir de un archivo de datos. La usan las demás. | — |
 
-La regla: **Fable decide y revisa, Opus programa, Haiku lee.** Los modelos son una recomendación. Cada comando avisa en su primera línea si estás usando otro, y seguís igual. Conviene una sesión por comando, o un `/clear` entre uno y otro.
+La regla: **Fable decide y revisa, Opus programa, Haiku lee.** Los modelos y el esfuerzo son una recomendación, y ningún comando los cambia por su cuenta. Cada comando dice en su primera línea con qué modelo y qué esfuerzo estás corriendo y, si no son los recomendados, cuáles convienen. Vos decidís si cambiás o seguís. Conviene una sesión por comando, o un `/clear` entre uno y otro.
 
 ## Cómo se instalan
 

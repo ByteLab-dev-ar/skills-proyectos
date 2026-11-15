@@ -2,7 +2,6 @@
 name: spec
 description: Escribe la spec de una función antes de programarla. Revisa el núcleo, el roadmap, las specs anteriores y los pendientes, pregunta lo que no está definido y guarda la spec en la bóveda, con sus tareas y sus criterios. Es solo para funciones; los arreglos y los cambios chicos no llevan spec.
 disable-model-invocation: true
-effort: high
 argument-hint: 'la función, en una oración, o el nombre de su fila en el roadmap'
 allowed-tools: Read, Glob, Grep, Write, Edit, AskUserQuestion, Bash(ls:*), Bash(cat:*), Bash(date:*), Bash(node:*)
 ---
@@ -23,7 +22,9 @@ Si no hay línea `**Specs:**`, pará y decile al usuario que corra `/iniciar-pro
 
 ## Modelo y esfuerzo
 
-Este comando está pensado para **Fable 5.2 con esfuerzo alto**: escribir una spec es decidir qué se va a construir, y un error acá se paga en cada paso del código. Opus 5.5 queda para programar, en `/spec-impl`. Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale que lo deje en alto para toda la sesión.
+Este comando está pensado para **Fable 5.2 con esfuerzo alto**: escribir una spec es decidir qué se va a construir, y un error acá se paga en cada paso del código. Opus 5.5 queda para programar, en `/spec-impl`.
+
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Qué es una spec y cuándo hace falta
 

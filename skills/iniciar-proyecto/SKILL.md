@@ -2,7 +2,6 @@
 name: iniciar-proyecto
 description: Arranca un proyecto nuevo a partir de la idea de la app. Analiza la idea, pregunta lo que falta, cierra las decisiones caras de cambiar, define la versión 1 y dónde se publica, recomienda las tecnologías, crea la bóveda de Obsidian con su núcleo y el dibujo de la arquitectura, y deja el CLAUDE.md del proyecto. Va antes de /modulos.
 disable-model-invocation: true
-effort: high
 argument-hint: 'la idea de la app: qué hace, para quién y cómo se vende o se usa'
 ---
 
@@ -23,7 +22,7 @@ Contesta una pregunta: **qué es la app y con qué se hace.** Qué partes tiene 
 
 Este comando está pensado para **Fable 5.2 con esfuerzo alto**: se corre una vez y decide lo más caro de cambiar.
 
-Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea ("Este comando rinde mejor con Fable 5.2 en esfuerzo alto; ahora estás en …") y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale también que lo deje en alto para toda la sesión.
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene ("Estás en Opus 5.5 con esfuerzo medio; este comando rinde mejor con Fable 5.2 en esfuerzo alto."). Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Reglas de toda la skill
 

@@ -2,7 +2,6 @@
 name: cerrar-spec
 description: Cierra una spec ya implementada con /spec-impl. Corre los tests, comprueba cada criterio de aceptación con evidencia, rompe el código a propósito para ver que cada test falla, revisa el código, la seguridad y las reglas de los módulos, arregla lo que encuentra, actualiza la bóveda y marca la spec como hecha en el roadmap. Es obligatorio antes de pasar una spec a "Implementado".
 disable-model-invocation: true
-effort: high
 argument-hint: '<número de la spec>'
 ---
 
@@ -14,7 +13,7 @@ Cierra la spec `$ARGUMENTS`. Si no te pasaron ninguna, preguntá cuál. Está en
 
 Este comando está pensado para **Fable 5.2 con esfuerzo alto**. Es el último control antes de dar una spec por hecha, y conviene que revise un modelo distinto al que programó.
 
-Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale que lo deje en alto para toda la sesión.
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Dos reglas
 

@@ -1,7 +1,6 @@
 ---
 name: estado
 description: Dice en qué punto está el proyecto. Muestra qué funciona, qué está en curso, qué sigue, qué se puede hacer ya, qué espera y cuánto falta para la versión 1, y el comando que conviene correr ahora. Solo lee; no cambia nada. Usala cuando el usuario pregunta en qué está el proyecto o qué sigue.
-effort: low
 allowed-tools: Read, Glob, Grep, Bash(node:*), Bash(ls:*), Bash(git status:*), Bash(git branch:*)
 ---
 
@@ -11,7 +10,9 @@ Dice en qué punto está el proyecto de la carpeta actual. **Solo lee: no cambia
 
 ## Modelo y esfuerzo
 
-Este comando lee y resume: en una sesión nueva alcanza con **Haiku 5.5 y esfuerzo bajo**. Si la sesión ya está en otro modelo, no pidas cambiarlo: cambiar a mitad de sesión sale más caro que seguir.
+Este comando lee y resume: en una sesión nueva alcanza con **Haiku 5.5 y esfuerzo bajo**.
+
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Si la sesión ya venía trabajando, sumá que cambiar a mitad de sesión puede salir más caro que seguir. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Pasos
 

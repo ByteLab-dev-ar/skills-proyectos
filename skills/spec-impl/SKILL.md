@@ -2,7 +2,6 @@
 name: spec-impl
 description: Implementa una spec aprobada, paso a paso. Comprueba que esté en "Aprobado", crea la rama de la spec desde la principal al día, programa cada paso con sus tests primero, lo revisa, muestra solo el diff de ese paso, deja probar la app y guarda cada paso aprobado con su commit.
 disable-model-invocation: true
-effort: high
 argument-hint: '<número de la spec>'
 allowed-tools: Read, Glob, Grep, Edit, Write, AskUserQuestion, Bash(git status:*), Bash(git branch:*), Bash(git checkout:*), Bash(git pull:*), Bash(git log:*), Bash(git diff:*), Bash(git add:*), Bash(git commit:*), Bash(git push:*), Bash(cat:*), Bash(ls:*), Bash(pnpm:*), Bash(node:*), Bash(docker compose:*), Bash(curl:*)
 ---
@@ -24,9 +23,9 @@ Dónde viven las specs:
 
 ## Modelo y esfuerzo
 
-Este comando está pensado para **Opus 5.5 con esfuerzo alto**. Si el encabezado de la spec dice `Sensible: sí`, con esfuerzo **extra alto**.
+Este comando está pensado para **Opus 5.5 con esfuerzo alto**: programar bien también es decidir (dónde va cada archivo, qué trae el stack y no hay que escribir a mano), y ahí Opus es más fuerte. Si el encabezado de la spec dice `Sensible: sí`, con esfuerzo **extra alto** (`xhigh`).
 
-Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale cuál le conviene dejar para toda la sesión.
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Si la spec resulta sensible, avisalo apenas leas su encabezado. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## Quién escribe el código
 

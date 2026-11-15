@@ -2,7 +2,6 @@
 name: modulos
 description: Define los módulos de la app. Dice qué resuelve cada uno, qué tablas son suyas, de quién depende, quién puede hacer qué y qué se deja listo para lo que pueda venir. Deja el modelo de datos, el mapa de pantallas y el roadmap general. Va después de /iniciar-proyecto y antes de la primera /spec; se vuelve a correr cuando la app suma un módulo.
 disable-model-invocation: true
-effort: high
 argument-hint: 'vacío la primera vez; después, el módulo que se suma o que cambia'
 ---
 
@@ -16,7 +15,7 @@ Contesta una pregunta: **qué partes tiene la app.** Si te pasaron algo en `$ARG
 
 Este comando está pensado para **Fable 5.2 con esfuerzo alto**: cómo se reparten los datos es de lo más caro de cambiar después.
 
-Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale también que lo deje en alto para toda la sesión.
+Esta sesión corre con esfuerzo `${CLAUDE_EFFORT}`. En la primera línea, decí con qué modelo y qué esfuerzo estás corriendo, y si alguno no es el recomendado, cuál conviene. Después seguí igual: el usuario decide si cambia o sigue así.
 
 ## La idea
 
