@@ -18,7 +18,7 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 | `/spec` | Escribe la spec de una función antes de programarla: pregunta lo que no está definido y guarda la spec, sus tareas y sus criterios. | Fable 5.2, alto |
 | `/spec-impl` | Implementa una spec aprobada, de a un paso: tests primero, revisión, el diff de ese paso, prueba en el navegador y un commit. | Opus 5.5, alto (extra alto si la spec es sensible) |
 | `/cerrar-spec` | Comprueba cada criterio con evidencia, rompe el código a propósito para ver que cada test falla, revisa código, seguridad y convenciones, y une la rama. | Fable 5.2, alto |
-| `/iniciar-mobile` | Arma la parte mobile cuando la web ya está. | Opus 5.5, alto |
+| `/iniciar-mobile` | Arma la parte mobile cuando la web ya está. | Fable 5.2, alto |
 | `/estado` | Dice en qué punto está el proyecto y qué comando conviene correr ahora. Solo lee. | Haiku 5.5, bajo |
 | `dibujar` | Genera los dibujos de la bóveda como SVG, a partir de un archivo de datos. La usan las demás. | — |
 
