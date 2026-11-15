@@ -23,7 +23,7 @@ Si no hay línea `**Specs:**`, pará y decile al usuario que corra `/iniciar-pro
 
 ## Modelo y esfuerzo
 
-Este comando está pensado para **Opus 5.5 con esfuerzo alto**. Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale que lo deje en alto para toda la sesión.
+Este comando está pensado para **Fable 5.2 con esfuerzo alto**: escribir una spec es decidir qué se va a construir, y un error acá se paga en cada paso del código. Opus 5.5 queda para programar, en `/spec-impl`. Antes de nada, fijate con qué modelo estás corriendo. Si no es ese, decilo en la primera línea y seguí: el usuario decide si cambia. El esfuerzo del encabezado vale solo para la primera respuesta, así que recordale que lo deje en alto para toda la sesión.
 
 ## Qué es una spec y cuándo hace falta
 
@@ -138,7 +138,7 @@ Leé `plantilla.md` (en la carpeta de esta skill): es la forma que tiene que res
 7. **Los pendientes:** borrá de `Proyecto/Pendientes.md` los que entraron en esta spec. Si un pendiente o una pregunta al cliente nombra algo que esta spec cambió, corregí su texto.
 8. **Las dependencias:** comprobá que cada spec de `Depende de:` existe. Si falta una, decilo.
 9. **Un commit en la bóveda** con la spec, sus tareas, sus criterios y el roadmap.
-10. **Avisá y pará:** la ruta de la spec, que está en `Borrador` y que el usuario la pasa a `Aprobado` cuando la relea, y el paso que sigue: `/spec-impl NN`, en una sesión nueva o después de `/clear`. Si la spec es sensible, decí que esa sesión va con esfuerzo extra alto.
+10. **Avisá y pará:** la ruta de la spec, que está en `Borrador` y que el usuario la pasa a `Aprobado` cuando la relea, y el paso que sigue: `/spec-impl NN`, en una sesión nueva o después de `/clear`. `/clear` no cambia el modelo: `/spec-impl` va con Opus 5.5, así que hay que cambiarlo en el menú antes de correrlo. Si la spec es sensible, decí que esa sesión va con esfuerzo extra alto.
 
 ## Reglas
 

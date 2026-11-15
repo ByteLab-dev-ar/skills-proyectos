@@ -15,14 +15,14 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 |---|---|---|
 | `/iniciar-proyecto` | Analiza la idea, pregunta lo que falta, cierra las decisiones caras de cambiar (datos sensibles, quién entra, dónde se publica), crea la bóveda y su núcleo. | Fable 5.2, alto |
 | `/modulos` | Define los módulos con alta cohesión y bajo acoplamiento: tablas, permisos, puertas abiertas y palabras del negocio. Dibuja el modelo de datos, el mapa de pantallas y el roadmap. | Fable 5.2, alto |
-| `/spec` | Escribe la spec de una función antes de programarla: pregunta lo que no está definido y guarda la spec, sus tareas y sus criterios. | Opus 5.5, alto |
+| `/spec` | Escribe la spec de una función antes de programarla: pregunta lo que no está definido y guarda la spec, sus tareas y sus criterios. | Fable 5.2, alto |
 | `/spec-impl` | Implementa una spec aprobada, de a un paso: tests primero, revisión, el diff de ese paso, prueba en el navegador y un commit. | Opus 5.5, alto (extra alto si la spec es sensible) |
 | `/cerrar-spec` | Comprueba cada criterio con evidencia, rompe el código a propósito para ver que cada test falla, revisa código, seguridad y convenciones, y une la rama. | Fable 5.2, alto |
 | `/iniciar-mobile` | Arma la parte mobile cuando la web ya está. | Opus 5.5, alto |
 | `/estado` | Dice en qué punto está el proyecto y qué comando conviene correr ahora. Solo lee. | Haiku 5.5, bajo |
 | `dibujar` | Genera los dibujos de la bóveda como SVG, a partir de un archivo de datos. La usan las demás. | — |
 
-Los modelos son una recomendación. Cada comando avisa en su primera línea si estás usando otro, y seguís igual. Conviene una sesión por comando, o un `/clear` entre uno y otro.
+La regla: **Fable decide y revisa, Opus programa, Haiku lee.** Los modelos son una recomendación. Cada comando avisa en su primera línea si estás usando otro, y seguís igual. Conviene una sesión por comando, o un `/clear` entre uno y otro.
 
 ## Cómo se instalan
 
