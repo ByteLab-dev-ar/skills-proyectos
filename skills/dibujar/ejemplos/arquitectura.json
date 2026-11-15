@@ -1,0 +1,26 @@
+{
+  "titulo": "Recibos · Arquitectura",
+  "capas": [
+    {
+      "nombre": "Lo que usa la persona",
+      "tipo": "persona",
+      "partes": [
+        { "nombre": "Web", "detalle": "Next.js · la usa la empresa" },
+        { "nombre": "Celular", "detalle": "Expo · lo usa el empleado" }
+      ]
+    },
+    {
+      "nombre": "El sistema",
+      "tipo": "sistema",
+      "partes": [{ "nombre": "API", "detalle": "NestJS", "candado": "separa los datos de cada empresa" }]
+    },
+    {
+      "nombre": "Donde se guarda y lo de afuera",
+      "partes": [
+        { "nombre": "Base de datos", "tipo": "datos", "detalle": "PostgreSQL", "candado": "sueldos: dato sensible" },
+        { "nombre": "Archivos", "tipo": "afuera", "detalle": "R2 · los PDF de los recibos" },
+        { "nombre": "Mails", "tipo": "afuera", "detalle": "Resend" }
+      ]
+    }
+  ]
+}

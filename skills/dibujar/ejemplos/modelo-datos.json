@@ -1,0 +1,52 @@
+{
+  "titulo": "Recibos · Modelo de datos",
+  "modulos": ["Base", "Acceso", "Mails", "Empresas", "Recibos"],
+  "tablas": [
+    {
+      "nombre": "empresa",
+      "modulo": "Empresas",
+      "columnas": [
+        { "nombre": "id", "tipo": "uuid", "pk": true },
+        { "nombre": "cuit", "tipo": "text" },
+        { "nombre": "nombre", "tipo": "text" },
+        { "nombre": "plan", "tipo": "text" }
+      ]
+    },
+    {
+      "nombre": "usuario",
+      "modulo": "Acceso",
+      "columnas": [
+        { "nombre": "id", "tipo": "uuid", "pk": true },
+        { "nombre": "empresa_id", "tipo": "uuid", "fk": "empresa" },
+        { "nombre": "email", "tipo": "text" },
+        { "nombre": "clave_hash", "tipo": "text" },
+        { "nombre": "rol", "tipo": "text" }
+      ]
+    },
+    {
+      "nombre": "empleado",
+      "modulo": "Empresas",
+      "columnas": [
+        { "nombre": "id", "tipo": "uuid", "pk": true },
+        { "nombre": "empresa_id", "tipo": "uuid", "fk": "empresa" },
+        { "nombre": "email", "tipo": "text" },
+        { "nombre": "legajo", "tipo": "text?" }
+      ]
+    },
+    {
+      "nombre": "recibo",
+      "modulo": "Recibos",
+      "columnas": [
+        { "nombre": "id", "tipo": "uuid", "pk": true },
+        { "nombre": "empleado_id", "tipo": "uuid", "fk": "empleado" },
+        { "nombre": "periodo", "tipo": "date" },
+        { "nombre": "neto", "tipo": "numeric" },
+        { "nombre": "firmado_en", "tipo": "timestamptz?" }
+      ]
+    }
+  ],
+  "notas": [
+    "Un solo recibo por empleado y por período (índice único).",
+    "El ? al final del tipo quiere decir que el dato puede quedar vacío."
+  ]
+}

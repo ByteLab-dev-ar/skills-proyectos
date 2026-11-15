@@ -1,0 +1,14 @@
+{
+  "titulo": "Recibos · Roadmap general",
+  "modulos": ["Base", "Acceso", "Mails", "Empresas", "Recibos"],
+  "version1Hasta": "Carga de recibos",
+  "filas": [
+    { "nombre": "Base del sistema", "modulo": "Base", "tamano": "mediano", "deja": "La app arranca y está publicada, todavía sin funciones.", "unico": { "spec": 1, "hecha": true } },
+    { "nombre": "Login", "modulo": "Acceso", "tamano": "mediano", "deja": "Se puede registrar un usuario y entrar con su contraseña.", "backend": { "spec": 2, "hecha": true }, "pantalla": {} },
+    { "nombre": "Mails", "modulo": "Mails", "tamano": "chico", "deja": "La app puede mandar mails.", "backend": {} },
+    { "nombre": "Recuperar contraseña", "modulo": "Acceso", "tamano": "chico", "deja": "Quien olvidó su contraseña puede cambiarla desde un mail.", "backend": { "necesita": ["Mails"] }, "pantalla": {} },
+    { "nombre": "Empresas y empleados", "modulo": "Empresas", "tamano": "grande", "deja": "Una empresa carga sus empleados y los ve en una lista.", "backend": {}, "pantalla": {} },
+    { "nombre": "Carga de recibos", "modulo": "Recibos", "tamano": "grande", "deja": "La empresa sube los recibos del mes y cada empleado ve los suyos.", "backend": { "necesita": ["Empresas y empleados"] }, "pantalla": {} },
+    { "nombre": "Firma del recibo", "modulo": "Recibos", "tamano": "mediano", "deja": "El empleado firma su recibo y la empresa ve quién firmó.", "backend": { "frenada": "espera al cliente" }, "pantalla": {} }
+  ]
+}

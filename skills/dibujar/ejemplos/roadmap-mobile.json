@@ -1,0 +1,11 @@
+{
+  "titulo": "Recibos · Roadmap mobile",
+  "modulos": ["Base", "Acceso", "Mails", "Empresas", "Recibos"],
+  "base": "roadmap-general.json",
+  "filas": [
+    { "nombre": "Login", "modulo": "Acceso", "tamano": "chico", "deja": "El empleado entra desde su teléfono.", "pantalla": { "necesita": ["Login"] } },
+    { "nombre": "Recuperar contraseña", "modulo": "Acceso", "tamano": "chico", "deja": "Quien olvidó su contraseña la cambia desde el teléfono.", "pantalla": { "necesita": ["Recuperar contraseña"] } },
+    { "nombre": "Mis recibos", "modulo": "Recibos", "tamano": "mediano", "deja": "El empleado ve sus recibos, ordenados por mes.", "pantalla": { "necesita": ["Carga de recibos"] } },
+    { "nombre": "Firma del recibo", "modulo": "Recibos", "tamano": "mediano", "deja": "El empleado firma su recibo desde el teléfono.", "pantalla": { "necesita": ["Firma del recibo"] } }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "titulo": "Recibos · Mapa de pantallas",
+  "modulos": ["Base", "Acceso", "Mails", "Empresas", "Recibos"],
+  "secciones": [
+    {
+      "nombre": "Web · la usa la empresa",
+      "pantallas": [
+        { "nombre": "Login", "modulo": "Acceso", "hace": "entra con mail y contraseña", "va": ["Inicio", "Recuperar contraseña"] },
+        { "nombre": "Recuperar contraseña", "modulo": "Acceso", "hace": "pide un mail para cambiarla" },
+        { "nombre": "Inicio", "modulo": "Base", "hace": "resumen del mes", "va": ["Empleados", "Cargar recibos"] },
+        { "nombre": "Empleados", "modulo": "Empresas", "hace": "alta y baja de empleados" },
+        { "nombre": "Cargar recibos", "modulo": "Recibos", "hace": "sube los PDF del mes" }
+      ]
+    },
+    {
+      "nombre": "Celular · lo usa el empleado",
+      "pantallas": [
+        { "nombre": "Login", "modulo": "Acceso", "hace": "entra con mail y contraseña", "va": ["Mis recibos", "Recuperar contraseña"] },
+        { "nombre": "Recuperar contraseña", "modulo": "Acceso", "hace": "pide un mail para cambiarla" },
+        { "nombre": "Mis recibos", "modulo": "Recibos", "hace": "lista por mes", "va": ["Detalle"] },
+        { "nombre": "Detalle", "modulo": "Recibos", "hace": "ve el recibo", "va": ["Firma"] },
+        { "nombre": "Firma", "modulo": "Recibos", "hace": "firma con su contraseña" }
+      ]
+    }
+  ]
+}
