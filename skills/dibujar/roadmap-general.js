@@ -17,7 +17,8 @@ const dos = (n) => String(n).padStart(2, '0');
 // así el roadmap mobile sabe qué backend ya está hecho.
 function calcularEstados(filas, filasBase = []) {
   const porNombre = new Map([...filas, ...filasBase].map((f) => [f.nombre, f]));
-  const filaHecha = (f) => Boolean((f.unico || f.backend || {}).hecha);
+  // Una fila está hecha cuando lo está su backend; si no tiene backend, su pantalla.
+  const filaHecha = (f) => Boolean((f.unico || f.backend || f.pantalla || {}).hecha);
   let haySigue = false;
   const estado = (cartel, fila, esPantalla) => {
     if (cartel.hecha) return { tipo: 'hecha', nota: 'hecha' };
@@ -196,6 +197,12 @@ if (process.argv.includes('--test')) {
     { nombre: 'Avisos', modulo: 'Mails', pantalla: { necesita: ['Mails'] } },
   ];
   assert.deepStrictEqual(calcularEstados(mobile, filas).flatMap((f) => f.carteles.map((c) => c.tipo)), ['sigue', 'espera']);
+  // Una fila con solo pantalla, ya hecha, no deja esperando para siempre a la que la necesita.
+  const soloPantalla = [
+    { nombre: 'Verificar', modulo: 'M', pantalla: { spec: 16, hecha: true } },
+    { nombre: 'Otra', modulo: 'M', backend: { necesita: ['Verificar'] } },
+  ];
+  assert.deepStrictEqual(calcularEstados(soloPantalla).flatMap((f) => f.carteles.map((c) => c.tipo)), ['hecha', 'sigue']);
   const texto = resumen({ version1Hasta: 'Mails', filas });
   assert.ok(texto.includes('SIGUE\n- Login · pantalla'));
   assert.ok(texto.includes('Versión 1: faltan 2 carteles'));

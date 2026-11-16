@@ -1,6 +1,6 @@
 # skills-proyectos
 
-Ocho skills para llevar un proyecto de software desde la idea hasta que está terminado, con Claude Code. Están escritas en castellano rioplatense, cortas, y cada regla dice por qué existe.
+Nueve skills para llevar un proyecto de software desde la idea hasta que está terminado, con Claude Code. Están escritas en castellano rioplatense, cortas, y cada regla dice por qué existe.
 
 La idea de fondo: **se decide antes de programar, se programa de a un paso, y nada se da por hecho sin evidencia.** Lo que se decide queda escrito en una bóveda de Obsidian, y lo que se programa queda en una rama por spec, con un commit por paso.
 
@@ -9,6 +9,7 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 ```text
 /iniciar-proyecto → /modulos → /spec → /spec-impl → /cerrar-spec      (/estado, en cualquier momento)
 /iniciar-mobile, cuando el roadmap general está completo y la app tiene mobile
+/adoptar, una vez, en un proyecto que ya tiene código, en lugar de los dos primeros
 ```
 
 | Comando | Qué hace | Modelo y esfuerzo |
@@ -19,6 +20,7 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 | `/spec-impl` | Implementa una spec aprobada, de a un paso: tests primero, revisión, el diff de ese paso, prueba en el navegador y un commit. | Opus 5.5, alto (extra alto si la spec es sensible) |
 | `/cerrar-spec` | Comprueba cada criterio con evidencia, rompe el código a propósito para ver que cada test falla, revisa código, seguridad y convenciones, y une la rama. | Fable 5.2, alto |
 | `/iniciar-mobile` | Arma la parte mobile cuando la web ya está. | Fable 5.2, alto |
+| `/adoptar` | Pasa a estas skills un proyecto que ya tiene código: lee todo sin tocar nada, muestra qué falta y qué es distinto, decide con vos qué queda como regla del proyecto y completa la bóveda. No reescribe código. | Fable 5.2, alto |
 | `/estado` | Dice en qué punto está el proyecto y qué comando conviene correr ahora. Solo lee. | Haiku 5.5, bajo |
 | `dibujar` | Genera los dibujos de la bóveda como SVG, a partir de un archivo de datos. La usan las demás. | — |
 
@@ -32,7 +34,7 @@ npx skills@latest add ByteLab-dev-ar/skills-proyectos
 
 Para instalarlas en todos tus proyectos y no solo en el actual, sumá `-g`. Con `-l` ves cuáles hay sin instalar nada. Es el instalador de [vercel-labs/skills](https://github.com/vercel-labs/skills).
 
-**Instalá las ocho.** `estado` usa un script de `dibujar`, y los demás comandos se nombran entre sí.
+**Instalá todas.** `estado` usa un script de `dibujar`, y los demás comandos se nombran entre sí.
 
 Sin `npx`, copiando las carpetas a `~/.claude/skills/` (o a `.claude/skills/` de un proyecto):
 
@@ -73,10 +75,12 @@ Las skills parten de ahí. Si tu stack es otro, cambiá ese archivo y vas a tene
 
 Se probaron de punta a punta con una app de turnos para una peluquería: `/iniciar-proyecto`, `/modulos` y cinco specs, hasta tener un login con su pantalla, con 138 tests de la API y 35 de punta a punta.
 
+`/adoptar` se probó con un proyecto real de 21 specs, hecho con otras reglas. Después, `/cerrar-spec` cerró su spec abierta con un pull request en GitHub: lo abrió, lo unió y borró la rama.
+
 No está probado:
 
 - **`/iniciar-mobile`.** Nunca se corrió.
-- **El cierre con pull request y CI en GitHub.** La prueba no tenía remoto, así que usó la unión local con git. Los comandos de `gh` se comprobaron contra su documentación, no contra un repo real.
+- **Esperar al CI antes de unir.** El repo de la prueba no tenía CI, así que `/cerrar-spec` unió el pull request sin esa espera.
 - **Arrancar la app sin ningún `.env`.** Una regla de permisos de quien las probó no deja que Claude los toque.
 
 ## Créditos

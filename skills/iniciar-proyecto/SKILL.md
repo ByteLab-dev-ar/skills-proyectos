@@ -89,7 +89,7 @@ CLAUDE.md             el reglamento de la bóveda
 Roadmap general.svg   el orden de construcción (lo crea /modulos, con su .json al lado)
 Proyecto/
   Núcleo.md           qué es la app, sus decisiones y sus módulos
-  Pendientes.md       lo que espera al cliente o a una spec futura (tareas de Tasks)
+  Pendientes.md       lo que espera al cliente o a una spec futura, y los cambios chicos sin hacer (tareas de Tasks)
   Arquitectura.svg    las partes de la app y cómo se conectan
 Cliente/              lo que dice el cliente, y "Preguntas al cliente" (tareas de Tasks)
 Backend/
@@ -162,7 +162,7 @@ En la carpeta del proyecto, un `CLAUDE.md` corto. Lleva solo reglas, nunca una l
 
 Fuera de una spec, un arreglo o un cambio chico va en su propia rama (`cambio-<nombre>`) y se une a la principal cuando pasan los tests.
 
-A `Proyecto/Pendientes.md` de la bóveda va solo lo que espera una respuesta del cliente, es una función nueva o le toca a otra fila del roadmap, con su origen y su fecha. Lo demás se resuelve cuando aparece.
+A `Proyecto/Pendientes.md` de la bóveda va solo lo que espera una respuesta del cliente, es una función nueva, le toca a otra fila del roadmap o es un cambio chico que no se hizo en el momento, con su origen y su fecha. Lo demás se resuelve cuando aparece.
 ```
 
 Si la carpeta todavía no es un repo git, decíselo al usuario: lo inicializa él.
