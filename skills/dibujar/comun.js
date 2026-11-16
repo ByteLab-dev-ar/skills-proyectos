@@ -2,16 +2,17 @@
 const fs = require('fs');
 const path = require('path');
 
-// [fondo, borde, texto]. Un color por módulo.
+// [fondo, borde, texto]. Un color por módulo. Todos pastel y con el borde suave:
+// un borde oscuro repetido en muchas cajas cansa la vista.
 const PALETA = [
-  ['#F1EFE8', '#5F5E5A', '#444441'], // gris
-  ['#EEEDFE', '#534AB7', '#3C3489'], // violeta
-  ['#FBEAF0', '#993556', '#72243E'], // rosa
-  ['#E1F5EE', '#0F6E56', '#085041'], // verde agua
-  ['#FAECE7', '#993C1D', '#712B13'], // coral
-  ['#E6F1FB', '#185FA5', '#0C447C'], // azul
-  ['#FAEEDA', '#854F0B', '#633806'], // ámbar
-  ['#EAF3DE', '#3B6D11', '#27500A'], // verde
+  ['#F1EFE8', '#B9B7AE', '#5F5E5A'], // gris
+  ['#EEEDFE', '#ADA8E6', '#534AB7'], // violeta
+  ['#FBEAF0', '#E3A6BC', '#99405E'], // rosa
+  ['#E1F5EE', '#8CCDB9', '#0F6E56'], // verde agua
+  ['#FCEFE6', '#E8B79A', '#9A5630'], // durazno
+  ['#E8F2FC', '#8DB8E3', '#1F5C99'], // azul
+  ['#FAEEDA', '#DDB878', '#854F0B'], // ámbar
+  ['#EAF3DE', '#A9CB86', '#3B6D11'], // verde
 ];
 const TINTA = '#2C2C2A';
 const APAGADO = '#888780';

@@ -57,12 +57,12 @@ function pastilla(x, medio, clave) {
   );
 }
 
-function tabla(t, x, y, [claro, fuerte]) {
+function tabla(t, x, y, [fondo, borde, texto]) {
   const alto = CABEZA + t.columnas.length * RENGLON;
   let s =
-    `<rect x="${x}" y="${y}" width="${ANCHO}" height="${alto}" rx="8" fill="#FFFFFF" stroke="#B4B2A9"/>` +
-    `<path d="M${x} ${y + CABEZA}V${y + 8}a8 8 0 0 1 8-8H${x + ANCHO - 8}a8 8 0 0 1 8 8V${y + CABEZA}z" fill="${fuerte}"/>` +
-    `<text x="${x + 12}" y="${y + 23}" font-size="14" font-weight="500" fill="${claro}">${esc(t.nombre)}</text>`;
+    `<rect x="${x}" y="${y}" width="${ANCHO}" height="${alto}" rx="8" fill="#FFFFFF" stroke="${borde}"/>` +
+    `<path d="M${x} ${y + CABEZA}V${y + 8}a8 8 0 0 1 8-8H${x + ANCHO - 8}a8 8 0 0 1 8 8V${y + CABEZA}z" fill="${fondo}" stroke="${borde}"/>` +
+    `<text x="${x + 12}" y="${y + 23}" font-size="14" font-weight="500" fill="${texto}">${esc(t.nombre)}</text>`;
   t.columnas.forEach((c, i) => {
     const medio = y + CABEZA + i * RENGLON + RENGLON / 2;
     if (i) s += `<path d="M${x + 1} ${medio - RENGLON / 2}H${x + ANCHO - 1}" stroke="#E5E3DC"/>`;
