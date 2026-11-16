@@ -20,7 +20,7 @@ La idea de fondo: **se decide antes de programar, se programa de a un paso, y na
 | `/spec-impl` | Implementa una spec aprobada, de a un paso: tests primero, revisión, el diff de ese paso, prueba en el navegador y un commit. | Opus 5.5, alto (extra alto si la spec es sensible) |
 | `/cerrar-spec` | Comprueba cada criterio con evidencia, rompe el código a propósito para ver que cada test falla, revisa código, seguridad y convenciones, y une la rama. | Fable 5.2, alto |
 | `/iniciar-mobile` | Arma la parte mobile cuando la web ya está. | Fable 5.2, alto |
-| `/adoptar` | Pasa a estas skills un proyecto que ya tiene código: lee todo sin tocar nada, muestra qué falta y qué es distinto, decide con vos qué queda como regla del proyecto y completa la bóveda. No reescribe código. | Fable 5.2, alto |
+| `/adoptar` | Pasa a estas skills un proyecto que ya tiene código: rehace los dibujos, el roadmap y el núcleo de la bóveda con lo que ya existe, y anota como regla del proyecto lo que el código hace distinto. No toca el código. | Fable 5.2, alto |
 | `/estado` | Dice en qué punto está el proyecto y qué comando conviene correr ahora. Solo lee. | Haiku 5.5, bajo |
 | `dibujar` | Genera los dibujos de la bóveda como SVG, a partir de un archivo de datos. La usan las demás. | — |
 

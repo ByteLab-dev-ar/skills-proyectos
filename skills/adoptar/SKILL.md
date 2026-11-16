@@ -1,6 +1,6 @@
 ---
 name: adoptar
-description: Pasa a estas skills un proyecto que ya tiene código y una bóveda hecha con otras reglas. Primero lee todo sin tocar nada y muestra qué está, qué falta y qué es distinto. Después, con el visto bueno del usuario, decide con él qué queda como regla del proyecto, completa la bóveda y deja el CLAUDE.md del proyecto. No reescribe código. Se corre una vez por proyecto.
+description: Pasa a estas skills un proyecto que ya tiene código y una bóveda hecha con otras reglas. Primero lee todo sin tocar nada y muestra qué está, qué falta y qué es distinto. Después, con el visto bueno del usuario, rehace los dibujos y la bóveda con la forma de estas skills, anota como regla del proyecto lo que el código hace distinto y deja el CLAUDE.md del proyecto. No toca el código ni deja listas de cambios. Se corre una vez por proyecto.
 disable-model-invocation: true
 argument-hint: 'vacío, o lo que el usuario ya sabe que quiere cambiar'
 allowed-tools: Read, Glob, Grep, Write, Edit, AskUserQuestion, Bash(git status:*), Bash(git branch:*), Bash(git log:*), Bash(git diff:*), Bash(git remote:*), Bash(ls:*), Bash(node:*)
@@ -12,7 +12,7 @@ Pasa a estas skills el proyecto de la carpeta actual. Lo que el usuario ya sabe:
 
 **La idea:** adoptar no es empezar de nuevo. Lo que el proyecto ya decidió y funciona queda como regla del proyecto. Lo que les falta a los demás comandos para andar se crea, sacándolo del código y de la bóveda que ya existen. Cuando termina, `/estado`, `/spec`, `/spec-impl` y `/cerrar-spec` funcionan como si el proyecto hubiera nacido con `/iniciar-proyecto` y `/modulos`.
 
-**Lo que no hace:** no toca el código, no cambia de rama y no hace commits en el proyecto: eso lo decide el usuario. No borra notas sin preguntar. No inventa: lo que no sale del código ni de la bóveda se pregunta.
+**Lo que no hace:** no toca el código, no cambia de rama y no hace commits en el proyecto: eso lo decide el usuario. No borra notas sin preguntar. No inventa: lo que no sale del código ni de la bóveda se pregunta. No propone cambios al código ni los anota para después: lo que el código hace distinto queda como regla del proyecto.
 
 ## Modelo y esfuerzo
 
@@ -59,24 +59,18 @@ Lo que se propone es una de estas cosas:
 
 - **Lo crea `/adoptar`**, sacándolo de lo que ya existe.
 - **Queda como regla del proyecto.** Se anota en las convenciones de su `CLAUDE.md`.
-- **Se corrige después:** un cambio chico en su rama, o una fila del roadmap si es grande.
 - **Lo decide el usuario**, porque no sale de ningún lado.
 
 Lo que ya está bien va en una sola línea, contado. Terminá preguntando si se sigue.
 
-### 4. Decidir las diferencias del código
+### 4. Anotar las diferencias del código
 
-Una pregunta por cada convención de `preferencias.md` que el código no cumple:
-
-- **Queda como regla del proyecto.** Es lo recomendado cuando todo el código ya lo hace de una misma manera y cambiarlo es reescribir. Por ejemplo, valida con zod en vez de class-validator.
-- **Se corrige.** Es lo recomendado cuando el cambio es chico o lo viejo es un error. Si es chico, va a los cambios chicos de Pendientes (paso 5). Si es grande, es una fila del roadmap con su spec.
-
-Mientras no se corrige, el código nuevo sigue la forma vieja. Dos formas de hacer lo mismo en un proyecto es peor que cualquiera de las dos.
+Lo que el código hace distinto de `preferencias.md` queda como regla del proyecto, tal como está hoy, y se anota en su `CLAUDE.md`. Por ejemplo, valida con zod en vez de class-validator. El código nuevo sigue esa regla: dos formas de hacer lo mismo en un proyecto es peor que cualquiera de las dos. Si el usuario quiere cambiar algo del código, lo hace cuando quiera: `/adoptar` no lo anota para después.
 
 Dos casos que siempre aparecen:
 
-- **Nombres del negocio en castellano dentro del código** (`afiliado`, `ficha`): recomendá dejarlos. Cambiarlos es renombrar tablas y columnas, y eso es una migración con riesgo. Las palabras del negocio del núcleo anotan el nombre que el código ya usa.
-- **Controles con otros nombres, o uno por carpeta:** anotá en el `CLAUDE.md` cómo se corre cada uno de los seis. Los que no existen (por ejemplo, `typecheck`) son un cambio chico.
+- **Nombres del negocio en castellano dentro del código** (`afiliado`, `ficha`): quedan. Cambiarlos es renombrar tablas y columnas, y eso es una migración con riesgo. Las palabras del negocio del núcleo anotan el nombre que el código ya usa.
+- **Controles con otros nombres, o uno por carpeta:** anotá en el `CLAUDE.md` cómo se corre cada uno de los seis. Si alguno no existe, anotalo así, sin prometer que llega.
 
 ### 5. Completar la bóveda
 
@@ -84,7 +78,7 @@ Con las skills `obsidian-markdown` y `dibujar`:
 
 - **El reglamento** (el `CLAUDE.md` de la bóveda): reescribilo con la forma de `/iniciar-proyecto`. Quedan las reglas propias del proyecto que no la contradicen, y se van los nombres de skills viejas.
 - **El núcleo:** sumá las secciones que faltan de `/iniciar-proyecto` y `/modulos`, armadas con lo que ya existe. Por ejemplo, una nota de datos sensibles pasa a la tabla de decisiones caras, y una de permisos, a la sección Permisos. Lo que no está se pregunta. Si el núcleo tenía el orden de las specs, se saca de ahí: pasa al roadmap.
-- **`Proyecto/Pendientes.md`:** se arma con las listas de pendientes que hubiera en el `CLAUDE.md` del proyecto o en el núcleo. Entra solo lo que admiten los tamaños de trabajo. Los arreglos y cambios chicos (los de esas listas, los que encontró la lectura y los que se decidieron en el paso 4) van a su sección, `## Cambios chicos`, cada uno con su rama `cambio-<nombre>`, su objetivo y cómo se comprueba. `/adoptar` no toca el código, así que ninguno se hace en el momento: si quedan solo en el resumen, se pierden con el chat.
+- **`Proyecto/Pendientes.md`:** se arma con las listas de pendientes que hubiera en el `CLAUDE.md` del proyecto o en el núcleo. Entra solo lo que admiten los tamaños de trabajo: lo que en esas listas era un arreglo o un cambio chico no pasa.
 - **`Cliente/Preguntas al cliente.md`:** si las preguntas estaban en otro lado, se mueven acá, con la forma de tareas de `/iniciar-proyecto`.
 - **`Roadmap general.json`:** una fila por función, con su `backend` y su `pantalla`. Si el proyecto hizo el backend y la pantalla de una función en specs separadas, van en la misma fila, cada spec en su cartel. Las specs en `Implementado` llevan `hecha: true`. Las filas que faltan salen del orden viejo y de los roadmaps viejos. Dibujalo, miralo como imagen y corré `--estado`: cada spec `Implementado` tiene que aparecer hecha.
 - **Los dibujos:** el modelo de datos sale de las entidades y las migraciones, el mapa de pantallas de las rutas, y la arquitectura del núcleo y del `docker-compose`. Si había dibujos viejos de lo mismo, preguntá si se borran: dos dibujos de una cosa terminan diciendo cosas distintas. La bóveda tiene git, así que se pueden recuperar.
@@ -100,7 +94,7 @@ Al final, un commit en la bóveda: `Adopción: la bóveda pasa a las skills nuev
 Con la forma del paso 8 de `/iniciar-proyecto`:
 
 - La línea `**Specs:**` con la raíz de la bóveda. Si ya está, se queda.
-- Las convenciones de `preferencias.md`, con las reglas del proyecto que se decidieron en el paso 4.
+- Las convenciones de `preferencias.md`, con las reglas del proyecto del paso 4.
 - Los tamaños de trabajo, copiados tal cual.
 - Se quedan las reglas propias que siguen valiendo (por ejemplo, cómo se prueba la API a mano).
 - Se van las listas de pendientes, que ya están en la bóveda, y las secciones de comandos viejos.
@@ -117,6 +111,5 @@ Mostrá:
 
 - Lo que quedó creado o movido, con sus rutas.
 - Las reglas propias del proyecto, cada una en una línea.
-- Cuántos cambios chicos quedaron en Pendientes, y cuál conviene hacer primero.
 - Las preguntas al cliente que frenan algo.
 - El comando que sigue, en una sesión nueva: `/cerrar-spec NN` o `/spec-impl NN` si hay una spec abierta, y si no, `/estado`.
