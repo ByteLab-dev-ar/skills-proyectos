@@ -113,7 +113,7 @@ Corregí también lo que el núcleo ya decía y acá cambió (por ejemplo, la ve
 
 ### 10. Dibujar
 
-Con la skill `dibujar`. Los tres archivos de datos llevan la misma lista `"modulos"`, en el mismo orden, para que cada módulo tenga el mismo color en los tres.
+Con la skill `dibujar`. Los tres archivos de datos llevan la misma lista `"modulos"`, en el mismo orden, para que cada módulo tenga el mismo color en el modelo de datos y en el mapa de pantallas. El roadmap no pinta los módulos: su color dice qué está hecho y qué falta.
 
 **El modelo de datos**, en `Backend/Estructura/Modelo de datos`. Una flecha entre dos colores es una dependencia entre módulos: revisá que coincidan con las del paso 5. Si una tabla está en casi todas (la empresa, cuando la app la usan varias), nombrala en `sinFlecha`: sus claves llevan la pastilla y no la flecha.
 

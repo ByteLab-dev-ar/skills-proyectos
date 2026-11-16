@@ -3,9 +3,12 @@
 // Uso:    node roadmap-general.js datos.json salida.svg
 // Prueba: node roadmap-general.js --test
 const assert = require('assert');
-const { PALETA, TINTA, APAGADO, esc, colores, candado, flecha, marco, leer, consola } = require('./comun');
+const { TINTA, APAGADO, esc, candado, flecha, marco, leer, consola } = require('./comun');
 
-const GRIS = PALETA[0];
+// [fondo, borde, texto]. Acá el color dice el estado, no el módulo: azul lo hecho, rojo suave lo que falta.
+const HECHO = ['#E8F2FC', '#8DB8E3', '#1F5C99'];
+const FALTA = ['#FDEEEE', '#E3A3A3', '#9B4444'];
+const colorDe = (tipo) => (tipo === 'hecha' ? HECHO : FALTA);
 const ALTO = 44; // alto de un cartel
 const PASO = 52; // de una fila a la siguiente
 const ANCHO = 230; // ancho de un cartel
@@ -53,7 +56,8 @@ const ICONO = {
 };
 const punteado = (tipo) => (tipo === 'hecha' || tipo === 'sigue' ? '' : ' stroke-dasharray="5 4"');
 
-function cartel(x, y, ancho, [fondo, borde, texto], c) {
+function cartel(x, y, ancho, c) {
+  const [fondo, borde, texto] = colorDe(c.tipo);
   const icono = ICONO[c.tipo];
   return (
     `<rect x="${x}" y="${y}" width="${ancho}" height="${ALTO}" rx="8" fill="${fondo}" stroke="${borde}"${punteado(c.tipo)}/>` +
@@ -80,17 +84,17 @@ function leyenda(y) {
     .map(([tipo, texto], i) => {
       const x = 24 + i * 92;
       const icono = ICONO[tipo];
+      const col = colorDe(tipo);
       return (
-        `<rect x="${x}" y="${y}" width="84" height="24" rx="8" fill="${GRIS[0]}" stroke="${GRIS[1]}"${punteado(tipo)}/>` +
-        (icono ? icono(x + 10, y + 7.5, GRIS[2]) : '') +
-        `<text x="${x + 10 + (icono ? 14 : 0)}" y="${y + 16}" font-size="11" fill="${GRIS[2]}">${texto}</text>`
+        `<rect x="${x}" y="${y}" width="84" height="24" rx="8" fill="${col[0]}" stroke="${col[1]}"${punteado(tipo)}/>` +
+        (icono ? icono(x + 10, y + 7.5, col[2]) : '') +
+        `<text x="${x + 10 + (icono ? 14 : 0)}" y="${y + 16}" font-size="11" fill="${col[2]}">${texto}</text>`
       );
     })
     .join('');
 }
 
-function dibujar({ titulo, modulos, version1Hasta, filas, filasBase }) {
-  const colorDe = colores(modulos);
+function dibujar({ titulo, version1Hasta, filas, filasBase }) {
   const Y0 = 100;
   const HUECO = 24; // lugar para la línea que marca hasta dónde llega la versión 1
   const corte = version1Hasta ? filas.findIndex((f) => f.nombre === version1Hasta) : -1;
@@ -102,7 +106,8 @@ function dibujar({ titulo, modulos, version1Hasta, filas, filasBase }) {
     .map((f, i) => {
       const y = yDe(i);
       const medio = y + ALTO / 2;
-      const col = colorDe(f.modulo);
+      // El número de la fila va en azul cuando todos sus carteles están hechos.
+      const col = f.carteles.every((c) => c.tipo === 'hecha') ? HECHO : FALTA;
       // Debajo del nombre va el tamaño de la fila (chico, mediano o grande), si lo tiene.
       const lineas = partir(f.nombre, 24).map((l) => [l, 13, TINTA]);
       if (f.tamano) lineas.push([f.tamano, 11, APAGADO]);
@@ -115,11 +120,11 @@ function dibujar({ titulo, modulos, version1Hasta, filas, filasBase }) {
           .join('');
       // Un cartel solo (la base del sistema, o una pantalla sin backend propio) ocupa todo el ancho.
       const solo = por.unico || (!por.backend && por.pantalla);
-      if (solo) return s + cartel(X.back, y, X.pant + ANCHO - X.back, col, solo);
-      if (por.backend) s += cartel(X.back, y, ANCHO, col, por.backend);
+      if (solo) return s + cartel(X.back, y, X.pant + ANCHO - X.back, solo);
+      if (por.backend) s += cartel(X.back, y, ANCHO, por.backend);
       if (por.pantalla) {
         if (por.backend) s += flecha([[X.back + ANCHO + 7, medio], [X.pant - 8, medio]]);
-        s += cartel(X.pant, y, ANCHO, col, por.pantalla);
+        s += cartel(X.pant, y, ANCHO, por.pantalla);
       } else {
         s += `<text x="${X.pant + 12}" y="${medio + 4}" font-size="12" fill="${APAGADO}">sin pantalla</text>`;
       }
@@ -191,6 +196,9 @@ if (process.argv.includes('--test')) {
   assert.ok(dibujar({ filas: [{ nombre: 'X', modulo: 'M', backend: { spec: 7 } }] }).includes('Backend · SPEC 07'));
   assert.ok(dibujar({ version1Hasta: 'Mails', filas }).includes('versión 1'));
   assert.throws(() => dibujar({ version1Hasta: 'Nada', filas }), /no existe/);
+  // El color dice el estado: un cartel hecho va en azul, y uno que falta, en rojo suave.
+  assert.ok(dibujar({ filas: [{ nombre: 'X', backend: { hecha: true } }] }).includes(`fill="${HECHO[0]}" stroke="${HECHO[1]}"/><text x="252"`));
+  assert.ok(dibujar({ filas: [{ nombre: 'X', backend: {} }] }).includes(`fill="${FALTA[0]}" stroke="${FALTA[1]}"/><text x="252"`));
   // Roadmap mobile: una pantalla depende del backend del roadmap general, aunque se llamen igual.
   const mobile = [
     { nombre: 'Login', modulo: 'Acceso', pantalla: { necesita: ['Login'] } },

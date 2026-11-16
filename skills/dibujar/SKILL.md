@@ -36,7 +36,9 @@ No hay más dibujos que estos. Cada dibujo de más es algo que hay que mantener 
 
 ## Los colores
 
-- En el roadmap, el modelo de datos y el mapa de pantallas, el color dice el módulo. Los tres archivos llevan la misma lista `"modulos"`, en el mismo orden: por eso cada módulo tiene el mismo color en los tres.
+- En el roadmap, el color dice el estado: azul lo hecho, y rojo suave lo que falta (lo que sigue, lo que está por hacer y lo frenado). El módulo de cada fila queda en el archivo de datos, pero no se pinta.
+- En el modelo de datos y el mapa de pantallas, el color dice el módulo. Los dos archivos llevan la misma lista `"modulos"` que el roadmap, en el mismo orden: por eso cada módulo tiene el mismo color en los dos.
+- Siempre colores pastel, con bordes suaves: un borde oscuro sobre muchas cajas cansa la vista.
 - En la arquitectura, el color dice el tipo de parte.
 
 ## Los datos de cada dibujo
